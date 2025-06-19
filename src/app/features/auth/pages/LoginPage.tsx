@@ -24,6 +24,7 @@ export default function LoginPage() {
                 <h1>Login</h1>
                 <label>Email:
                     <input
+                        required={true}
                         data-testid="email-input"
                         type="email"
                         value={email}
@@ -34,6 +35,7 @@ export default function LoginPage() {
                 <label>
                     Password:
                     <input
+                        required={true}
                         data-testid="password-input"
                         type="password"
                         value={password}
