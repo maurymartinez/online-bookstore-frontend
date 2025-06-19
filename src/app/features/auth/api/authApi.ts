@@ -1,12 +1,11 @@
-import type { Credentials } from '../domain/types';
+import type { Credentials } from '../domain/types'
+import { api } from '../../../shared/api/axios'
 
 export const loginApi = async (
     credentials: Credentials
-): Promise<{ user: { email: string }; token: string }> => {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
+): Promise<{ token: string }> => {
+    const response = await api.post('/auth/login', credentials);
     return {
-        user: { email: credentials.email },
-        token: 'fake-token',
+        token: response.data.access_token,
     };
-};
+}
