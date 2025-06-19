@@ -8,12 +8,16 @@ export default function LoginPage() {
     const dispatch = useDispatch<AppDispatch>();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('')
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError('');
+
         try {
             await dispatch(login({ email, password })).unwrap();
         } catch (err) {
+            setError('Login failed');
             console.error('Login failed:', err);
         }
     };
@@ -22,6 +26,11 @@ export default function LoginPage() {
         <div className="login-container">
             <form onSubmit={handleSubmit} className="login-form">
                 <h1>Login</h1>
+                {error && (
+                    <div className="error-message" data-testid="error-message">
+                        {error}
+                    </div>
+                )}
                 <label>Email:
                     <input
                         required={true}
