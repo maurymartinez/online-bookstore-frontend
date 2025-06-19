@@ -19,17 +19,16 @@ describe('loginApi', () => {
         }
 
         const mockResponse = {
-                data: {
-                    user: { email: credentials.email },
-                    token: 'real-token'
-                }
-            };
+            data:{
+                access_token: 'real-token',
+            }
+        };
 
         (api.post as ReturnType<typeof vi.fn>).mockResolvedValueOnce(mockResponse)
 
         const result = await loginApi(credentials)
 
         expect(api.post).toHaveBeenCalledWith('/auth/login', credentials)
-        expect(result).toEqual(mockResponse.data)
+        expect(result).toEqual({ token: 'real-token' })
     })
 })
