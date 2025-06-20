@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# 📚 Online Bookstore Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend for an online bookstore, built with:
 
-Currently, two official plugins are available:
+- React 19 + Vite
+- Redux Toolkit
+- React Router DOM
+- JWT Authentication with protected routes
+- Axios (with interceptors and token management)
+- Feature-based architecture (DDD-style)
+- Vitest + Testing Library for unit tests
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js >= 18
+- npm or yarn
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🚀 Getting Started
+
+### Install dependencies
+
+```
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run the app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+npm run dev
+```
+
+Then open [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🧪 Testing
+
+Run unit and integration tests with:
+
+```
+npx vitest run
+```
+
+## 👤 Features
+
+- ✅ Login with email & password
+- ✅ Register a new user
+- ✅ Logout and clear token
+- ✅ Token persisted in localStorage
+- ✅ Redirect if token is missing/expired
+- ✅ Add books to cart (UI only)
+- ✅ Error messages on failed auth
+- ✅ Styled with plain CSS (no framework)
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+├── app/
+│   ├── features/
+│   │   ├── auth/        ← Login, Register, Auth slice
+│   │   └── catalog/     ← Books page, BookItem component
+│   └── shared/
+│       ├── api/         ← Axios instance with interceptors
+│       └── router/      ← ProtectedLayout, RedirectIfAuthenticated
+└── state/               ← Global Redux store
+```
+
+---
+
+## 📄 License
+
+MIT
