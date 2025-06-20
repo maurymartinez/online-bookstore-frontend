@@ -5,13 +5,11 @@ import type { User, Credentials } from '../domain/types';
 export type AuthState = {
     user: User | null;
     token: string | null;
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
 };
 
 const initialState: AuthState = {
     user: null,
-    token: null,
-    status: 'idle',
+    token: typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null,
 };
 
 export const login = createAsyncThunk<

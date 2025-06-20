@@ -1,5 +1,5 @@
-import type { Credentials } from '../domain/types'
-import { api } from '../../../shared/api/axios'
+import type { Credentials } from '../domain/types';
+import { api } from '../../../shared/api/axios';
 
 export const loginApi = async (
     credentials: Credentials

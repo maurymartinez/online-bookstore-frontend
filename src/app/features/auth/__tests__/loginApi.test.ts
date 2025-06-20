@@ -1,12 +1,12 @@
-import { describe, it, expect, vi } from 'vitest'
-import { loginApi } from '../api/authApi'
-import { api } from '../../../shared/api/axios'
-import type { Credentials } from '../domain/types'
+import { describe, it, expect, vi } from 'vitest';
+import { loginApi } from '../api/authApi';
+import { api } from '../../../shared/api/axios';
+import type { Credentials } from '../domain/types';
 
 vi.mock('../../../shared/api/axios', () => {
     return {
         api: {
-            post: vi.fn()
+            post: vi.fn(),
         }
     }
 })
@@ -16,7 +16,7 @@ describe('loginApi', () => {
         const credentials: Credentials = {
             email: 'test@example.com',
             password: '123456'
-        }
+        };
 
         const mockResponse = {
             data:{
@@ -24,11 +24,11 @@ describe('loginApi', () => {
             }
         };
 
-        (api.post as ReturnType<typeof vi.fn>).mockResolvedValueOnce(mockResponse)
+        (api.post as ReturnType<typeof vi.fn>).mockResolvedValueOnce(mockResponse);
 
-        const result = await loginApi(credentials)
+        const result = await loginApi(credentials);
 
-        expect(api.post).toHaveBeenCalledWith('/auth/login', credentials)
-        expect(result).toEqual({ token: 'real-token' })
+        expect(api.post).toHaveBeenCalledWith('/auth/login', credentials);
+        expect(result).toEqual({ token: 'real-token' });
     })
 })

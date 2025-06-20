@@ -6,7 +6,6 @@ describe('authSlice', () => {
         const prevState: AuthState = {
             user: null,
             token: null,
-            status: 'idle',
         };
 
         const action = {
