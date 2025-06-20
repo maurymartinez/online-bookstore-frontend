@@ -9,3 +9,8 @@ export const loginApi = async (
         token: response.data.access_token,
     };
 }
+
+export const registerApi = async (data: { name: string; email: string; password: string }) => {
+    const response = await api.post('/auth/register', data);
+    if (response.status !== 201) throw new Error('Registration failed');
+}

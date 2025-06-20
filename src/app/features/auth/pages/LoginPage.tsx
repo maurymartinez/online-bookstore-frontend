@@ -55,6 +55,10 @@ export default function LoginPage() {
                 <button type="submit" data-testid="login-button">
                     Login
                 </button>
+
+                <p className="redirect-link">
+                    Don’t have an account? <a href="/register">Register</a>
+                </p>
             </form>
         </div>
     );
