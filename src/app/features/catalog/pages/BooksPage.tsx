@@ -1,7 +1,9 @@
+import './BookPage.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBooks } from '../slices/booksSlice';
 import type { RootState, AppDispatch } from '../../../state/store';
+import BookItem from './BookItem';
 
 export default function BooksPage() {
     const dispatch = useDispatch<AppDispatch>();
@@ -17,14 +19,10 @@ export default function BooksPage() {
     return (
         <div>
             <h1>Books</h1>
-            <ul>
+            <ul className="list-unstyled">
                 {items.map((book) => (
                     <li key={book.id}>
-                        <strong>{book.title}</strong> by {book.author} —{' '}
-                        {book.price.toLocaleString('de-DE', {
-                            style: 'currency',
-                            currency: 'EUR',
-                        })}
+                        <BookItem key={book.id} book={book} />
                     </li>
                 ))}
             </ul>
