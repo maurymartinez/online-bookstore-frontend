@@ -9,7 +9,7 @@ export type AuthState = {
 
 const initialState: AuthState = {
     user: null,
-    token: null,
+    token: typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null,
 };
 
 export const login = createAsyncThunk<
